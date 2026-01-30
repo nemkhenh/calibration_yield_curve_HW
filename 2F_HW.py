@@ -169,8 +169,6 @@ class HullWhite2F:
         """
         Residual function for calibration
         
-        Implements Two.factor.Vasicek.SZ.res from paper (lines 95)
-        
         Args:
             params: [gamma1, gamma2, sigma1, sigma2, rho]
             forward_vol_data: DataFrame with 'Maturities' and 'Forward Vol.sq'
@@ -202,8 +200,6 @@ class HullWhite2F:
                           forward_vol_data: pd.DataFrame) -> np.ndarray:
         """
         Jacobian matrix for calibration
-        
-        Implements Two.factor.Vasicek.SZ.gradient from paper (lines 96-97)
         
         Args:
             params: [gamma1, gamma2, sigma1, sigma2, rho]
@@ -270,8 +266,7 @@ class HullWhite2F:
                                                           [2, 2, 1.0, 1.0, 0.99])) -> Dict:
         """
         Calibrate 2F Hull-White to forward volatility structure
-        
-        Implements the method from paper (lines 97-98)
+
         Uses nonlinear least squares with analytical Jacobian
         
         Args:
@@ -641,4 +636,5 @@ if __name__ == "__main__":
     print("\n[6] Simulating two-factor paths...")
     hw2f_model.plot_simulated_paths(T=10, n_steps=100, n_paths=5,
                                     save_path='./hw2f_simulated_paths.png')
+
     
